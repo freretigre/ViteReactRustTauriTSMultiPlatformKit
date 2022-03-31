@@ -1,0 +1,14 @@
+@import "../../assets/base/global.scss";
+
+.normal{
+  :global{
+    h1{
+      font-size: px2rem(18);
+    }
+    .cardsvw{
+      border: px2rem(1) solid red;
+      width: px2rem(300);
+      height: px2rem(300);
+    }
+  }
+}

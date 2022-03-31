@@ -1,0 +1,34 @@
+.normal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    padding: 40px 74px;
+    background: rgba($color: #000000, $alpha: .9);
+    :global{
+        .logo{
+            color: red;
+            
+        }
+        .content{
+            color: red;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .menu{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                a:nth-child(2){
+                    margin: 0 60px;
+                }
+            }
+        }
+    }
+}

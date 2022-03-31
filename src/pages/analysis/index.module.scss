@@ -1,0 +1,27 @@
+@import '../../assets/base/global.scss';
+
+.normal{
+    :global{
+        h1{
+            color: red;
+            font-size: .32rem;
+        }
+        .MuiButton-root{
+            font-size: px2rem(32);
+            line-height: initial;
+            letter-spacing: 0.02857em;
+            text-transform: uppercase;
+            min-width: px2rem(64);
+            padding: px2rem(6) px2rem(16);
+            border-radius: px2rem(4);
+        }
+        .MuiImageList-root{
+            width: px2rem(500);
+            height: px2rem(450);
+            gap: px2rem(4) !important;
+            .MuiImageListItem-root{
+                height: px2rem(164) !important;
+            }
+        }
+    }
+}

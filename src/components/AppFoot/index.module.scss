@@ -1,0 +1,8 @@
+.normal{
+    width: 100vw;
+    :global{
+        .content{
+            color: red;
+        }
+    }
+}
