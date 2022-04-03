@@ -1,9 +1,11 @@
 import {memo} from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input, Card } from 'antd';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { actions } from '../../redux/actions';
 import Cards from '../../components/Cards';
 import Calendars from '../../components/Calendars';
+import PlotsMix from '../../components/Charts/PlotsMix';
+import EffectFades from '../../components/Swiper/EffectFades';
 
 
 
@@ -102,6 +104,8 @@ const Index = memo(() => {
 
     return (
         <div className={styles.normal}>
+            <EffectFades />
+            <PlotsMix />
             <Calendars />
             <div className='btns'>
               <Button onClick={handleAdd}>加+</Button>

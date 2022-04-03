@@ -1,8 +1,9 @@
 import {resolve} from 'path'                      // 路径
-import {defineConfig} from 'vite'                 // 配置相关方法参数 defineConfig
+import {defineConfig, splitVendorChunkPlugin} from 'vite'                 // 配置相关方法参数 defineConfig
 import react from '@vitejs/plugin-react'            // 使用 react
 import usePluginImport from 'vite-plugin-importer'  // antd 按需加载
 import viteCompression from 'vite-plugin-compression' // gzip压缩
+import { visualizer } from 'rollup-plugin-visualizer';
 
 // 自定义打包的静态目录名称
 const mkdirName = 'static';
@@ -33,6 +34,8 @@ export default defineConfig({
     },
     plugins: [
         react(),                    // 使用 react
+        visualizer(),               // 使用打包分析插件
+        splitVendorChunkPlugin(),               // 产物分块策略
         usePluginImport({           // antd 按需加载
             libraryName: "antd",
             libraryDirectory: "es",
@@ -57,10 +60,11 @@ export default defineConfig({
                 chunkFileNames: `${mkdirName}/js/[name]-[hash].js`,
                 entryFileNames: `${mkdirName}/js/[name]-[hash].js`,
                 // assetFileNames: `${mkdirName}/[ext]/[name]-[hash].[ext]`,
-                assetFileNames: `@assets/[ext]/[name]-${new Date().getTime()}.[ext]`, // css文件名加时间戳配置
+                assetFileNames: `assets/[ext]/[name]-${new Date().getTime()}.[ext]`, // css文件名加时间戳配置
 
             },
         },
+        outDir: 'dist', // 指定输出路径（相对于 项目根目录).
         assetsDir: mkdirName,   // 默认： assets 目录
         terserOptions: {        // 生产环境移除console
             compress: {
@@ -73,9 +77,6 @@ export default defineConfig({
     server: {
         port: 3000, // 默认端口号是 3000，这里我修改成 8088，主要是为了不和其它框框架端口号发生冲突
         cors: true, // 为开发服务器配置 CORS。默认启用并允许任何源，传递一个 选项对象 来调整行为或设为 false 表示禁用。
-        /*hmr: {
-            overlay: false, // 设置 server.hmr.overlay 为 false 可以禁用开发服务器错误的屏蔽。
-        },*/
         proxy: { // 代理配置
             // 字符串简写写法
             '/foo': 'http://localhost:4567',
