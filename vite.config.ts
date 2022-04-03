@@ -53,7 +53,7 @@ export default defineConfig({
         rollupOptions: {
             input: { // 多页面配置， 如果有需求，就在这里配置，如果不需要，可以把 input 这里删除掉
                 main: resolve(__dirname, 'index.html'),
-                // home: resolve(__dirname, "src/home/index.html"),
+                home: resolve(__dirname, "stats.html"), // 分析打包的文析的大小
                 // about: resolve(__dirname, "src/about/index.html"),
             },
             output: { // 资源打包分类
