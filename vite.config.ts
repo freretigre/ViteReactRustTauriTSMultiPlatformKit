@@ -73,6 +73,7 @@ export default defineConfig({
             },
         },
         minify: "terser",
+        manifest: true, // 当设置为 true，构建后将会生成 manifest.json 文件，
     },
     server: {
         port: 3000, // 默认端口号是 3000，这里我修改成 8088，主要是为了不和其它框框架端口号发生冲突
