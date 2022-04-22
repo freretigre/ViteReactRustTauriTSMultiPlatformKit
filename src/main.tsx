@@ -1,30 +1,44 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-// import ReactDOM, { hydrate } from 'react-dom';  // 18.0
-// import { createRoot } from 'react-dom/client';  // 18.0
+// import ReactDOM from 'react-dom';
+import ReactDOM, { hydrate } from 'react-dom';  // 18.0
+import { createRoot } from 'react-dom/client';  // 18.0
 import { Provider } from 'react-redux'
 import { rootStore } from "./redux/store";
 import Routers from "./routers";
 import '@/assets/base/global.scss';
 
-const container = document.getElementById('root');
+/* const container = document.getElementById('root');
 if(container?.hasChildNodes()){
   ReactDOM.hydrate(
-    <React.StrictMode>
-        <Provider store={rootStore}>
-            <Routers />
-        </Provider>
-    </React.StrictMode>, 
+    <Provider store={rootStore}>
+        <Routers />
+    </Provider>,
     container
   );
 }else{
   ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={rootStore}>
-            <Routers />
-        </Provider>
-    </React.StrictMode>,
+    <Provider store={rootStore}>
+        <Routers />
+    </Provider>,
     container,
+  );
+} */
+
+const container = document.getElementById('root');
+const root = createRoot(container as HTMLElement);
+
+if(container?.hasChildNodes()){
+  hydrate(
+    <Provider store={rootStore}>
+        <Routers />
+    </Provider>,
+    container
+  );
+}else{
+  root.render(
+    <Provider store={rootStore}>
+        <Routers />
+    </Provider>
   );
 }
 

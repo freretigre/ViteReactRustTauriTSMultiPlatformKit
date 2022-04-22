@@ -1,5 +1,5 @@
 import {memo, ReactChild, ReactFragment, ReactPortal, useState, } from 'react';
-import { Button, Layout, Menu, Dropdown } from 'antd';
+import { Button, Layout, Menu, Dropdown, DropdownInterface } from 'antd';
 import {
     DownOutlined,
   } from '@ant-design/icons';
@@ -10,6 +10,8 @@ const { Header, Content, Footer } = Layout;
 
 
 type SyntheticBaseEvent = /*unresolved*/ any
+
+const Dropdowns: DropdownInterface = Dropdown;
 
 
 const SelectLangNew = memo(() => {
@@ -44,9 +46,9 @@ const SelectLangNew = memo(() => {
 
     return (
         <div className={styles.normal}>
-             <Dropdown overlay={menu}>
+             <Dropdowns overlay={menu}>
                 <a className="ant-dropdown-link">{ln} <DownOutlined /></a>
-            </Dropdown>
+            </Dropdowns>
         </div>
     );
 });
